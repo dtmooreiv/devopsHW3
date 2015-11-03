@@ -18,6 +18,9 @@ var server2Target = 'http://127.0.0.1:3001';
 
 var TARGET = serverTarget;
 
+//clear the old list
+client.del(proxyListKey);
+//and push in the new targets
 client.lpush(proxyListKey, serverTarget);
 client.lpush(proxyListKey, server2Target);
 

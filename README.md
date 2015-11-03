@@ -1,6 +1,12 @@
 Cache, Proxies, Queues
 =========================
 
+#Additional instance
+Two instances and a proxy run when 'node main.js' is executed. The instances run on ports 3000 and 3001, and the proxy is running on port 8080. The proxy alternates between these two targets by using rpoplpush to make a circular list in redis that contains the two targets to alternate between. Anytime a requests comes in to the proxy server, it routes the requests to the current target, toggles the target, and prints out what the new target is in the console.
+
+[Screencast](https://i.imgur.com/f59F597.gif)
+This screencast demonstrates running two instances, uploading cat pictures, setting keys that expire in redis, and the proxy alternating the target between the two instances.
+
 ### Setup
 
 * Clone this repo, run `npm install`.
